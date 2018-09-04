@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Icon } from "native-base";
+import Loading from "./Loading";
 
-class Lol extends Component {
+class Main extends Component {
   render() {
     return (
       <Icon
@@ -18,4 +19,4 @@ class Lol extends Component {
   }
 }
 
-export default Lol;
+export default Main;

@@ -6,7 +6,9 @@ import { Content } from "native-base";
 // Component
 import Login from "./Login";
 import Profile from "./Profile";
-import Lol from "./Lol";
+import Main from "./Main";
+import SideMenu from "./SideMenu";
+
 import PrivateLul from "./PrivateLul";
 
 // Router
@@ -20,10 +22,12 @@ class MainContent extends Component {
     return (
       <Content>
         <Switch>
-          <Route path="/lol" component={Lol} />
+          <Route path="/lol" component={Main} />
           <PrivateRoute path="/privateLul" component={PrivateLul} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route path="/login" component={Login} />
+          <Route path="/SideMenu" component={SideMenu} />
+
           <Redirect to="/lol" />
         </Switch>
       </Content>
