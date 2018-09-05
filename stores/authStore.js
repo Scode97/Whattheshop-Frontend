@@ -88,6 +88,7 @@ class Store {
 
 decorate(Store, {
   user: observable,
+  // loginUser: observable,
   isAuthenticated: computed
 });
 
