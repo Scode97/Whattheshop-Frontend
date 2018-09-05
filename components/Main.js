@@ -51,8 +51,8 @@ class Main extends Component {
    </View>
 
         <View>
-          
-          <TouchableOpacity onPress = {this.LinktoMealList} >
+          <Link component = {TouchableOpacity} to ="/MealList">
+
         <Image
      source={require('../Images/dryingredients1.jpg')}
      style={{
@@ -61,9 +61,9 @@ class Main extends Component {
        alignSelf: "center",
      }}
      />
-   </TouchableOpacity>
 
 
+</Link>
  </View>
 
 
