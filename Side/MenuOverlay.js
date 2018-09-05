@@ -4,7 +4,8 @@ import {
     Text
 } from 'react-native';
 
-import styles from './MenuOverlayStyle'
+import styles from './MenuOverlayStyle';
+import Main from "../components/Main";
 
 export default class MenuOverlay extends Component {
 
@@ -15,7 +16,10 @@ export default class MenuOverlay extends Component {
                 onPress={() => {
                     this.props.onToggleMenu()
                 }}
-                style={styles.overlay}>
+                style={styles.overlay}
+                onPress={Main}
+
+                >
                 <Text></Text>
             </TouchableHighlight>
         );

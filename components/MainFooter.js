@@ -30,6 +30,8 @@ class MainFooter extends Component {
             <Icon name="person" />
           </Link>
 
+        
+
         </FooterTab>
       </Footer>
 

@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text
+    Text,
 } from 'react-native';
 
 import MenuOverlay from '../Side/MenuOverlay'
-
 import styles from '../Side/SideMenuStyle'
+import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail
+} from 'native-base';
+
 
 export default class SideMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+
     render() {
         let {
             navigation,
@@ -30,10 +26,30 @@ export default class SideMenu extends Component {
                     navigation={navigation}
                 />
                 <View style={styles.menu}>
-                    {/* <MenuList
-                        onToggleMenu={onToggleMenu}
-                        navigation={navigation}
-                    /> */}
+                  <List>
+
+          <ListItem >
+            <Body>
+
+              <Text>SlackBox Plans</Text>
+            </Body>
+          </ListItem>
+
+
+          <ListItem >
+            <Body>
+              <Text>Snackbox Plans</Text>
+            </Body>
+          </ListItem>
+
+
+          <ListItem >
+            <Body>
+              <Text>Contact Us</Text>
+            </Body>
+          </ListItem>
+
+        </List>
                 </View>
             </View>
 

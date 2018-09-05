@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Icon } from "native-base";
-import { Image } from "react-native";
-
+import { Image, View } from "react-native";
 import Main from "./Main";
-import Box from "../Images/Box.png"
 
 class Loading extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      component : <Main/>
+      loading : true
     }
 
 
@@ -19,8 +17,8 @@ class Loading extends Component{
      // Start counting when the page is loaded
      this.timeoutHandle = setTimeout(()=>{
           // Add your logic for the transition
-          this.setState({ component: <Image source = {require('../Images/Box.png')} /> })
-     }, 5000);
+          this.setState({ loading: false })
+     }, 2000);
   }
 
   componentWillUnmount(){
@@ -28,8 +26,16 @@ class Loading extends Component{
   }
 
   render() {
+    if(this.state.loading) return <View>
+      <Image
+        source={require('../Images/Logo.jpg')}
+
+        >
+
+        </Image>
+    </View>
     return (
-      this.state.component
+      <Main />
     );
 
   }
