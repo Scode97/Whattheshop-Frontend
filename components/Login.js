@@ -21,6 +21,8 @@ class Login extends Component {
 
   render() {
     if (authStore.isAuthenticated) return <Redirect to="/profile" />;
+    // console.log(this.state.username);
+    // console.log(this.state.password);
     return (
       <Form>
         <Item>
@@ -40,7 +42,9 @@ class Login extends Component {
         </Item>
         <Button
           full
-          onPress={() => alert("You need to implement Login noob...")}
+          onPress={() =>
+            authStore.loginUser(this.state.username, this.state.password)
+          }
         >
           <Text>Login</Text>
         </Button>
