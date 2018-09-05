@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { SideMenu, List, ListItem } from 'react-native-elements'
+import { Text} from 'react-native';
+
+import { SideMenu, List, ListItem } from 'react-native-elements';
 import dataStore from "../stores/dataStore";
 
 class MealList extends Component {
