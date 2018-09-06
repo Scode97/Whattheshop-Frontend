@@ -28,7 +28,12 @@ class Loading extends Component{
   render() {
     if(this.state.loading) return <View>
       <Image
-        source={require('../Images/Logo.jpg')}
+        source={require('../Images/loading.jpg')}
+        style={{
+          width: 400,
+          height: 700,
+          alignSelf: "center",
+        }}
 
         >
 

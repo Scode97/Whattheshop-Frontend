@@ -7,24 +7,49 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "http://192.168.100.251:8000"
 });
 
 class dataStore {
   constructor() {
-    this.mealsList = [];
+    this.MealsList = [];
+    this.plans = [
+      {
+      name: 'Solo',
+      id: 1,
+    },
+    {
+      name: 'Couple',
+      id: 2,
+
+    },
+    {
+      name: 'Family',
+      id: 3,
+
+    },
+  ];
+  this.index = 0;
+  }
+
+  setIndex(id){
+    this.index = id
   }
 
   planList(){
-  axios.get('/api/api/mealsList')
+  instance.get("/api/plansList/")
     .then(response => response.data)
-    .then(MealList => this.mealsList = MealList)
-    .catch(error => console.error(error));
+    .then(MealList => {
+      this.MealsList = MealList;
+      console.log(this.MealsList);})
+    .catch(error => console.log(error));
   }
 
 }
 decorate(dataStore, {
-  mealsList: observable,
+  MealsList: observable,
+  plans: observable,
+
 
 });
 
