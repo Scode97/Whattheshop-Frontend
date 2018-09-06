@@ -10,7 +10,14 @@ import Main from "./Main";
 import SideMenu from "./SideMenu";
 import Loading from "./Loading";
 import MealList from "./MealList";
+
 import RegisterForm from "./RegistrationForm";
+
+import SlackBoxPlans from "./SlackBoxPlans";
+import SlackBoxPlansDetail from "./SlackBoxPlansDetail";
+
+
+
 
 import PrivateLul from "./PrivateLul";
 
@@ -27,7 +34,12 @@ class MainContent extends Component {
         <Switch>
           <Route exact path="/" component={Loading} />
           <Route path="/lol" component={Main} />
-          <Route path="/MealList" component={MealList} />
+
+
+          <Route path ="/MealList" component = {MealList}/>
+          <Route path ="/SlackBoxPlans" component = {SlackBoxPlans}/>
+          <Route path ="/plansDetail" component = {SlackBoxPlansDetail}/>
+
           <PrivateRoute path="/privateLul" component={PrivateLul} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route path="/login" component={Login} />

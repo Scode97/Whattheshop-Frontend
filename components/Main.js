@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import {Content,Icon, Button, Text} from "native-base";
+import {Content,Icon, Button, Text, } from "native-base";
 import { Link } from "react-router-native";
 
 import {ImageBackground, ScrollView, Image, TouchableOpacity, View} from "react-native";
 import MealList from "./MealList";
+import SlackBoxPlans from "./SlackBoxPlans";
+
 import Login from "./Login";
 
 class Main extends Component {
@@ -37,7 +39,8 @@ class Main extends Component {
         />
 
         <View>
-          <TouchableOpacity onPress={()=>{alert("you clicked me")}}>
+          <Link component = {TouchableOpacity} to ="/SlackBoxPlans">
+
         <Image
      source={require('../Images/dryingredients.jpg')}
      style={{
@@ -46,9 +49,11 @@ class Main extends Component {
        alignSelf: "center",
      }}
      />
-   </TouchableOpacity>
 
-   </View>
+
+</Link>
+ </View>
+
 
         <View>
           <Link component = {TouchableOpacity} to ="/MealList">

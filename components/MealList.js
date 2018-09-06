@@ -1,19 +1,42 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
 
-import { List, ListItem } from "react-native";
+import { Text, View} from 'react-native';
+import {Card, CardItem, Body } from "native-base";
+
+
+import { SideMenu, List, ListItem } from 'react-native-elements';
+import {observer} from "mobx-react";
+
 import dataStore from "../stores/dataStore";
-// import { Card, CardItem } from "native-base";
+
 
 class MealList extends Component {
-  renderItem(data) {
-    return <Text key={data.name}>hello</Text>;
+
+  renderItem(data){
+    return (
+      <Card>
+      <CardItem >
+
+                <Body>
+                  <Text >{data.name}</Text>
+
+                </Body>
+
+            </CardItem>
+          </Card>
+    )
+  }
+  componentDidMount(){
+    dataStore.planList()
   }
   render() {
-    const List = dataStore.mealsList.map(this.renderItem);
-    console.log(List);
-    return <List>{List}</List>;
+    const MealList = dataStore.MealsList.map (data => this.renderItem(data));
+    return (
+
+      <List> {MealList}</List>
+
+    );
   }
 }
 
-export default MealList;
+export default  observer(MealList);
