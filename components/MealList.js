@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { Text} from 'react-native';
+import { Text } from "react-native";
 
-import { SideMenu, List, ListItem } from 'react-native-elements';
+import { List, ListItem } from "react-native";
 import dataStore from "../stores/dataStore";
+// import { Card, CardItem } from "native-base";
 
 class MealList extends Component {
-  renderItem(data){
-    return <Text>{data.name}</Text>
+  renderItem(data) {
+    return <Text key={data.name}>hello</Text>;
   }
   render() {
-    // const MealList = dataStore.mealsList.map (data => this.renderItem (data));
-    return (
-      <Text>HELLLLOOOOOO</Text>
-      // <List> {MealList}</List>
-    );
+    const List = dataStore.mealsList.map(this.renderItem);
+    console.log(List);
+    return <List>{List}</List>;
   }
 }
 

@@ -8,9 +8,11 @@ import authStore from "../stores/authStore";
 
 class Profile extends Component {
   render() {
+    if (!authStore.user) return <Redirect to="/register" />;
     return (
       <Card>
         <CardItem>
+          <Text>{authStore.user.username}</Text>
           <Button danger onPress={() => authStore.logoutUser()}>
             <Text>Logout</Text>
           </Button>
@@ -19,5 +21,5 @@ class Profile extends Component {
     );
   }
 }
-// export default Profile;
+
 export default observer(Profile);

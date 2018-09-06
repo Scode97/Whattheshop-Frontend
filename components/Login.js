@@ -4,6 +4,8 @@ import { observer } from "mobx-react";
 // NativeBase Components
 import { Form, Item, Input, Button, Text } from "native-base";
 
+import { Link } from "react-router-native";
+
 // Store
 import authStore from "../stores/authStore";
 
@@ -48,6 +50,9 @@ class Login extends Component {
         >
           <Text>Login</Text>
         </Button>
+        <Link component={Button} full to="/register">
+          <Text>Register</Text>
+        </Link>
       </Form>
     );
   }

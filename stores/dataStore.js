@@ -13,19 +13,20 @@ const instance = axios.create({
 class dataStore {
   constructor() {
     this.mealsList = [];
+    this.planList();
   }
+  s;
 
-  planList(){
-  axios.get('/api/api/mealsList')
-    .then(response => response.data)
-    .then(MealList => this.mealsList = MealList)
-    .catch(error => console.error(error));
+  planList() {
+    instance
+      .get("api/plansList/")
+      .then(response => response.data)
+      .then(MealList => (this.mealsList = MealList))
+      .catch(error => console.error(error));
   }
-
 }
 decorate(dataStore, {
-  mealsList: observable,
-
+  mealsList: observable
 });
 
 export default new dataStore();
