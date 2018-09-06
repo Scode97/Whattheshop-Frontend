@@ -9,10 +9,12 @@ import { Footer, FooterTab, Button, Icon } from "native-base";
 import { Link } from "react-router-native";
 
 class MainFooter extends Component {
-
+  
   render() {
 
     return (
+
+
       <Footer>
         <FooterTab>
           {/* onPress={() => this.props.history.goBack()} */}
@@ -30,7 +32,7 @@ class MainFooter extends Component {
             <Icon name="person" />
           </Link>
 
-        
+
 
         </FooterTab>
       </Footer>
