@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { SideMenu, List, ListItem } from 'react-native-elements'
-
+// import { SideMenu, List, ListItem } from 'react-native-elements'
 
 // NativeBase
 import { Footer, FooterTab, Button, Icon } from "native-base";
@@ -9,17 +8,15 @@ import { Footer, FooterTab, Button, Icon } from "native-base";
 import { Link } from "react-router-native";
 
 class MainFooter extends Component {
-  
   render() {
-
     return (
 
 
       <Footer>
         <FooterTab>
           {/* onPress={() => this.props.history.goBack()} */}
-           <Link component = {Button} to= "/SideMenu" >
-            <Icon type = "Octicons" name="list-unordered" color = "#BBBBBB" />
+          <Link component={Button} to="/SideMenu">
+            <Icon type="Octicons" name="list-unordered" color="#BBBBBB" />
           </Link>
 
           <Link component={Button} to="/lol">
@@ -32,14 +29,8 @@ class MainFooter extends Component {
             <Icon name="person" />
           </Link>
 
-
-
         </FooterTab>
       </Footer>
-
-
-
-
     );
   }
 }

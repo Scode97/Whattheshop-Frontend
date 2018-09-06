@@ -12,6 +12,7 @@ const instance = axios.create({
 
 class dataStore {
   constructor() {
+
     this.MealsList = [];
     this.plans = [
       {
@@ -34,7 +35,10 @@ class dataStore {
 
   setIndex(id){
     this.index = id
+
   }
+
+
 
   planList(){
   instance.get("/api/plansList/")
@@ -44,9 +48,9 @@ class dataStore {
       console.log(this.MealsList);})
     .catch(error => console.log(error));
   }
-
 }
 decorate(dataStore, {
+
   MealsList: observable,
   plans: observable,
 

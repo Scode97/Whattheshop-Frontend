@@ -1,13 +1,17 @@
 import React, { Component } from "react";
+
 import { Text, View} from 'react-native';
 import {Card, CardItem, Body } from "native-base";
 
 
 import { SideMenu, List, ListItem } from 'react-native-elements';
 import {observer} from "mobx-react";
+
 import dataStore from "../stores/dataStore";
 
+
 class MealList extends Component {
+
   renderItem(data){
     return (
       <Card>

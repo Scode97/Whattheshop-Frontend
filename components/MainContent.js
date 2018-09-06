@@ -10,13 +10,16 @@ import Main from "./Main";
 import SideMenu from "./SideMenu";
 import Loading from "./Loading";
 import MealList from "./MealList";
+
+import RegisterForm from "./RegistrationForm";
+
 import SlackBoxPlans from "./SlackBoxPlans";
 import SlackBoxPlansDetail from "./SlackBoxPlansDetail";
 
 
 
+
 import PrivateLul from "./PrivateLul";
-import PageList from "./MealPage";
 
 // Router
 import { Route, Switch, Redirect } from "react-router-native";
@@ -29,17 +32,20 @@ class MainContent extends Component {
     return (
       <Content>
         <Switch>
-          <Route exact path= "/" component = {Loading}/>
+          <Route exact path="/" component={Loading} />
           <Route path="/lol" component={Main} />
+
+
           <Route path ="/MealList" component = {MealList}/>
           <Route path ="/SlackBoxPlans" component = {SlackBoxPlans}/>
           <Route path ="/plansDetail" component = {SlackBoxPlansDetail}/>
+
           <PrivateRoute path="/privateLul" component={PrivateLul} />
           <PrivateRoute path="/profile" component={Profile} />
-          <Route path="/mealpage" component={PageList} />
           <Route path="/login" component={Login} />
           <Route path="/SideMenu" component={SideMenu} />
 
+          <Route path="/register" component={RegisterForm} />
 
           <Redirect to="/lol" />
         </Switch>

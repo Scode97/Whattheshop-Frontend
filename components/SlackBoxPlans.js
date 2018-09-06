@@ -10,8 +10,8 @@ import {observer} from "mobx-react";
 import dataStore from "../stores/dataStore";
 import authStore from "../stores/authStore";
 
-
 class SlackBoxPlans extends Component {
+
   renderItem(data){
     return (
 

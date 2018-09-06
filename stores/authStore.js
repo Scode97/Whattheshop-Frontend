@@ -84,6 +84,30 @@ class Store {
       })
       .catch(err => console.error(err));
   };
+
+  registerUser(username, password, firstname, lastname, email) {
+    instance
+      .post("/api/register/", {
+        username: username,
+        password: password,
+        firstname: firstname,
+        lastname: lastname,
+        email: email
+      })
+      .then(res => res.response)
+      .then(user => {
+        const { token } = user;
+        AsyncStorage.setItem("jwtToken", token)
+          .then(() => {
+            // Set token to Auth header
+            setAuthToken(token);
+            const decoded = jwt_decode(token);
+            this.setCurrentUser(decoded);
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  }
 }
 
 decorate(Store, {
