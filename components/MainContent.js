@@ -13,6 +13,8 @@ import MealList from "./MealList";
 import RegisterForm from "./RegisterForm";
 import SlackBoxPlans from "./SlackBoxPlans";
 import SlackBoxPlansDetail from "./SlackBoxPlansDetail";
+import Cart from "./Cart";
+
 // import Cart from "./cart";
 import PrivateLul from "./PrivateLul";
 
@@ -30,11 +32,10 @@ class MainContent extends Component {
           <Route exact path="/" component={Loading} />
           <Route path="/lol" component={Main} />
 
-
           {/* <Route path ="/MealList" component = {MealList}/> */}
-          <Route path ="/SlackBoxPlans" component = {SlackBoxPlans}/>
-          <Route path ="/plansDetail" component = {SlackBoxPlansDetail}/>
-          {/* <Route path = "/cart" component = {Cart}/> */}
+          <Route path="/SlackBoxPlans" component={SlackBoxPlans} />
+          <Route path="/plansDetail" component={SlackBoxPlansDetail} />
+          <Route path="/Cart" component={Cart} />
 
           <PrivateRoute path="/PrivateLul" component={PrivateLul} />
 
@@ -42,6 +43,7 @@ class MainContent extends Component {
           <Route path="/login" component={Login} />
           <Route path="/SideMenu" component={SideMenu} />
           <Route path="/RegisterForm" component={RegisterForm} />
+          {/* <Route path="/cart" component={Cart} /> */}
 
           <Redirect to="/lol" />
         </Switch>

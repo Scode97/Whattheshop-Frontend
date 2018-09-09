@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import {List } from 'react-native-elements';
+import { List } from "react-native";
 import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 
 //Routing
-import {Redirect} from "react-router-native";
+import { Redirect } from "react-router-native";
 
-//Components 
+//Components
 import authStore from "../stores/authStore";
-
 
 class Profile extends Component {
   render() {
@@ -19,13 +18,14 @@ class Profile extends Component {
       <Card>
         <CardItem>
           <List>
-          <Text>{authStore.user.username}</Text>
-          <Text>Hello</Text>
+            <Text>{authStore.user.username}</Text>
+            <Text>Hello</Text>
 
-          <Button danger onPress={() => authStore.logoutUser()}>
-            <Text>Logout</Text>
-          </Button>
-        </List>;
+            <Button danger onPress={() => authStore.logoutUser()}>
+              <Text>Logout</Text>
+            </Button>
+          </List>
+          ;
         </CardItem>
       </Card>
     );
