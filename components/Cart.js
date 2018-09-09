@@ -33,6 +33,7 @@ class Cart extends Component {
   }
   render() {
     return <List>{userStore.order.map(data => this.looping(data))}</List>;
+    // <Text>{userStore.totalPrice}</Text>;
   }
 }
 
