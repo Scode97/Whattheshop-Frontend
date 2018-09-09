@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { ImageBackground, Text, View} from 'react-native';
-import {Card, CardItem, Body, Thumbnail,Left } from "native-base";
+import { ImageBackground, Text, View, TouchableOpacity} from 'react-native';
+import {Card, CardItem, Body, Thumbnail,Left, Button } from "native-base";
 
 
 import { SideMenu, List, ListItem } from 'react-native-elements';
@@ -9,9 +9,12 @@ import dataStore from "../stores/dataStore";
 
 class SlackBoxPlansDetail extends Component {
   renderItem(data){
+    console.log("------------------------");
+    console.log(data)
     return (
       <ImageBackground
-      source={require('../Images/Highprotien.jpg')}
+        key = {data.name}
+      source={{uri: data.image}}
       style={{ height: 230, width: null, flex: 1 }}
     >
 
@@ -46,8 +49,11 @@ class SlackBoxPlansDetail extends Component {
   render() {
     const MealList = dataStore.MealsList.map (data => this.renderItem(data));
     return (
+      <View>
+        <List> {MealList}</List>
+        <Text>YOU ARE IN DETAIL PAGE</Text>
+      </View>
 
-      <List> {MealList}</List>
 
     );
   }

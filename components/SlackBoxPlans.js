@@ -16,15 +16,16 @@ class SlackBoxPlans extends Component {
     return (
 
           <Button
+            key = {data.name}
             onPress = {() => {
               dataStore.setIndex(data.id);
-              if (!authStore.isAuthenticated){
-              this.props.history.push('/Login')
-              }
-
-              else {
+              // if (!authStore.isAuthenticated){
+              // this.props.history.push('/Login')
+              // }
+              //
+              // else {
                 this.props.history.push('/plansDetail')
-              }
+              // }
             }}
 
             icon block success>
@@ -37,6 +38,9 @@ class SlackBoxPlans extends Component {
 
   }
 
+    componentDidMount(){
+      dataStore.planList()
+    }
 
   render() {
     const plans = dataStore.plans.map (data => this.renderItem(data));

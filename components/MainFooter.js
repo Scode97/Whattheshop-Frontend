@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { SideMenu, List, ListItem } from 'react-native-elements'
 
 // NativeBase
 import { Footer, FooterTab, Button, Icon } from "native-base";
@@ -15,14 +14,14 @@ class MainFooter extends Component {
       <Footer>
         <FooterTab>
           {/* onPress={() => this.props.history.goBack()} */}
-          <Link component={Button} to="/SideMenu">
+          {/* <Link component={Button} to="/SideMenu">
             <Icon type="Octicons" name="list-unordered" color="#BBBBBB" />
-          </Link>
+          </Link> */}
 
           <Link component={Button} to="/lol">
             <Icon type="Octicons" name="package" />
           </Link>
-          <Link component={Button} to="/privateLul">
+          <Link component={Button} to="/Login">
             <Icon name="lock" />
           </Link>
           <Link component={Button} to="/profile">
