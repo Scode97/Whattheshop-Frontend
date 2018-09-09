@@ -1,56 +1,92 @@
 import React, { Component } from "react";
-import { ImageBackground, Text, View} from 'react-native';
-import {Card, CardItem, Body, Thumbnail,Left } from "native-base";
+import { Text, View } from "react-native";
+import {
+  Card,
+  CardItem,
+  Body,
+  Button,
+  Icon,
+  Container,
+  Content,
+  List,
+  ListItem,
+  Left,
+  Right,
+  Thumbnail
+} from "native-base";
+import { Link, Redirect, withRouter } from "react-router-native";
 
-
-import { SideMenu, List, ListItem } from 'react-native-elements';
-import {observer} from "mobx-react";
+import { observer } from "mobx-react";
 import dataStore from "../stores/dataStore";
+import userStore from "../stores/userStore";
 
 class SlackBoxPlansDetail extends Component {
-  renderItem(data){
-    return (
-      <ImageBackground
-      source={require('../Images/Highprotien.jpg')}
-      style={{ height: 230, width: null, flex: 1 }}
-    >
+  // renderItem(data) {
+  //   return (
+  //     // <Button
+  //     //   key={data.name}
+  //     //   onPress={() => {
+  //     //     dataStore.setIndex(data.id);
+  //     //     // if (!authStore.isAuthenticated){
+  //     //     // this.props.history.push('/Login')
+  //     //     // }
+  //     //     //
+  //     //     // else {
+  //     //     this.props.history.push("/plansDetail");
+  //     //     // }
+  //     //   }}
+  //     //   icon
+  //     //   block
+  //     //   success
+  //     // >
+  //     //   <Icon name="person" />
+  //     //   <Text>{data.name}</Text>
+  //     // </Button>
+  //  // );
+  // }
 
-        <Card
-          style={{
-            backgroundColor: "transparent",
-            borderTopWidth: 0,
-            borderRightWidth: 0,
-            borderLeftWidth: 0,
-            borderBottomWidth: 0
-          }}
-        >
-          <CardItem style={{ backgroundColor: "transparent" }}>
-            <Left>
-              <Body>
-                {/* <Text style={styles.text}>{data.name}</Text> */}
+  // componentDidMount() {
+  //   dataStore.planList();
+  // }
 
-              </Body>
-            </Left>
-          </CardItem>
-        </Card>
-        <View style={styles.divider} />
-
-    </ImageBackground>
-
-  );
-  }
-
-  componentDidMount(){
-    dataStore.planList()
-  }
   render() {
-    const MealList = dataStore.MealsList.map (data => this.renderItem(data));
+    // let hi = this.props.match.params.index;
+    // let h = ListStore.list[x];
+
+    // const plans = dataStore.plans.map(data => this.renderItem(data));
+    let m = dataStore.MealsList[dataStore.x];
+    //console.log(m);
     return (
+      // let m = dataStore.MealsList[dataStore.x];
+      <View>
+        <List>
+          <ListItem>
+            <Left>
+              <Text>
+                {m.name + "\n"}
+                <Text note>{m.totalPrice + "\n"}</Text>
+                <Text note> {m.description}</Text>
+              </Text>
+            </Left>
+            <Body />
+          </ListItem>
 
-      <List> {MealList}</List>
-
+          <Button
+            onPress={() => {
+              userStore.createOrder(m.name);
+            }}
+            full
+            danger
+          >
+            <Text>Add</Text>
+          </Button>
+        </List>
+        {/* <Button>
+          <Text>{m.totalPrice}</Text>
+          <Text> HELLO DETAIL PAGE </Text>
+        </Button> */}
+      </View>
     );
   }
 }
-
-export default  observer(SlackBoxPlansDetail);
+export default withRouter(observer(SlackBoxPlansDetail));

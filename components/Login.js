@@ -50,7 +50,7 @@ class Login extends Component {
         >
           <Text>Login</Text>
         </Button>
-        <Link component={Button} full to="/register">
+        <Link component={Button} full to="/RegisterForm">
           <Text>Register</Text>
         </Link>
       </Form>

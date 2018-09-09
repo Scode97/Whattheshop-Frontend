@@ -1,47 +1,66 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Link } from "react-router-native";
+
+import {
+  ImageBackground,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Image
+} from "react-native";
 import {
   Card,
   CardItem,
   Body,
+  Thumbnail,
+  Left,
   Button,
+  List,
   Icon,
-  Container,
-  Content
+  Right
 } from "native-base";
-import { Link, Redirect, withRouter } from "react-router-native";
 
-import { SideMenu, List, ListItem } from "react-native-elements";
 import { observer } from "mobx-react";
 import dataStore from "../stores/dataStore";
-import authStore from "../stores/authStore";
 
 class SlackBoxPlans extends Component {
   renderItem(data) {
+    console.log("------------------------");
+    console.log(data);
     return (
-      <Button
-        onPress={() => {
-          dataStore.setIndex(data.id);
-          if (!authStore.isAuthenticated) {
-            this.props.history.push("/Login");
-          } else {
-            this.props.history.push("/plansDetail");
-          }
-        }}
-        icon
-        block
-        success
-      >
-        <Icon name="person" />
-        <Text>{data.name}</Text>
-      </Button>
+      <ScrollView key={data.name}>
+        <View>
+          <Link
+            component={TouchableOpacity}
+            to="/plansDetail/"
+            onPress={() => dataStore.findPlan(data.name)}
+          >
+            <Image
+              // component={TouchableOpacity}
+              // to="./SlackBoxPlansDetail"
+              // key={data.name}
+              source={{ uri: data.image }}
+              style={{ height: 230, width: null, flex: 1 }}
+            />
+          </Link>
+        </View>
+      </ScrollView>
     );
   }
 
+  componentDidMount() {
+    dataStore.planList();
+  }
   render() {
-    const plans = dataStore.plans.map(data => this.renderItem(data));
-
-    return <List>{plans}</List>;
+    const MealList = dataStore.MealsList.map(data => this.renderItem(data));
+    return (
+      <View>
+        <List> {MealList}</List>
+        {/* <Text>YOU ARE IN DETAIL PAGE</Text> */}
+      </View>
+    );
   }
 }
-export default withRouter(observer(SlackBoxPlans));
+
+export default observer(SlackBoxPlans);
