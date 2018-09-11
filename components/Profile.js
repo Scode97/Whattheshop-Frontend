@@ -16,17 +16,16 @@ class Profile extends Component {
     if (!authStore.user) return <Redirect to="/register" />;
     return (
       <Card>
-        <CardItem>
+        {/* <CardItem>
           <List>
-            <Text>{authStore.user.username}</Text>
-            <Text>Hello</Text>
-
-            <Button danger onPress={() => authStore.logoutUser()}>
+            <Text>{authStore.user.username}</Text> */}
+        <Text>Hello</Text>
+        {/* <Button danger onPress={() => authStore.logoutUser()}>
               <Text>Logout</Text>
             </Button>
           </List>
           ;
-        </CardItem>
+        </CardItem> */}
       </Card>
     );
   }

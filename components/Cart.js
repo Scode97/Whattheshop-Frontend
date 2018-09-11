@@ -32,7 +32,19 @@ class Cart extends Component {
     );
   }
   render() {
-    return <List>{userStore.order.map(data => this.looping(data))}</List>;
+    return (
+      <View>
+        <List>{userStore.order.map(data => this.looping(data))}</List>
+        <Button
+          onPress={() => {
+            userStore.sendData();
+          }}
+          danger
+        >
+          <Text>Checkout</Text>
+        </Button>
+      </View>
+    );
     // <Text>{userStore.totalPrice}</Text>;
   }
 }
