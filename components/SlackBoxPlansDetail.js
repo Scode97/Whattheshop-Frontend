@@ -12,6 +12,8 @@ import {
   ListItem,
   Left,
   Right,
+  Header,
+  Title,
   Thumbnail
 } from "native-base";
 import { Link, Redirect, withRouter } from "react-router-native";
@@ -21,71 +23,51 @@ import dataStore from "../stores/dataStore";
 import userStore from "../stores/userStore";
 
 class SlackBoxPlansDetail extends Component {
-  // renderItem(data) {
-  //   return (
-  //     // <Button
-  //     //   key={data.name}
-  //     //   onPress={() => {
-  //     //     dataStore.setIndex(data.id);
-  //     //     // if (!authStore.isAuthenticated){
-  //     //     // this.props.history.push('/Login')
-  //     //     // }
-  //     //     //
-  //     //     // else {
-  //     //     this.props.history.push("/plansDetail");
-  //     //     // }
-  //     //   }}
-  //     //   icon
-  //     //   block
-  //     //   success
-  //     // >
-  //     //   <Icon name="person" />
-  //     //   <Text>{data.name}</Text>
-  //     // </Button>
-  //  // );
-  // }
-
-  // componentDidMount() {
-  //   dataStore.planList();
-  // }
-
   render() {
-    // let hi = this.props.match.params.index;
-    // let h = ListStore.list[x];
-
-    // const plans = dataStore.plans.map(data => this.renderItem(data));
     let m = dataStore.MealsList[dataStore.x];
-    //console.log(m);
     return (
-      // let m = dataStore.MealsList[dataStore.x];
-      <View>
-        <List>
-          <ListItem>
-            <Left>
+      <Container style={styles.container}>
+        <Header>
+          <Body>
+            <Title>Menu</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <View style={{ paddingLeft: 20 }}>
+            <List>
               <Text>
-                {m.name + "\n"}
-                <Text note>{m.totalPrice + "\n"}</Text>
-                <Text note> {m.description}</Text>
+                <Left>
+                  <ListItem>
+                    {" "}
+                    <Text>Plan Name: </Text>
+                    <Text>{m.name} </Text>{" "}
+                  </ListItem>
+                  <ListItem>
+                    <Text>Plan Price: </Text>
+                    <Text note>{m.totalPrice}</Text>
+                  </ListItem>
+                </Left>
               </Text>
-            </Left>
-            <Body />
-          </ListItem>
 
-          <Button
-            onPress={() => {
-              userStore.createOrder(m.name);
-            }}
-            full
-            danger
-          >
-            <Text>Add</Text>
-          </Button>
-        </List>
-        {/* <Button>
-          <Text>{m.totalPrice}</Text>
-          <Text> HELLO DETAIL PAGE </Text>
-        </Button> */}
-      </View>
+              <ListItem>
+                <Text> {m.description}</Text>
+              </ListItem>
+
+              <Body />
+            </List>
+            <Button
+              onPress={() => {
+                userStore.createOrder(m.name);
+              }}
+              full
+              light
+            >
+              <Text>Add</Text>
+            </Button>
+          </View>
+        </Content>
+      </Container>
     );
   }
 }

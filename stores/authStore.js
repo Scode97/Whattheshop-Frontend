@@ -90,12 +90,13 @@ class Store {
       .post("/api/register/", {
         username: username,
         password: password,
-        firstname: firstname,
-        lastname: lastname,
+        first_name: firstname,
+        last_name: lastname,
         email: email
       })
       .then(res => res.response)
       .then(user => {
+        console.log(user);
         const { token } = user;
         AsyncStorage.setItem("jwtToken", token)
           .then(() => {

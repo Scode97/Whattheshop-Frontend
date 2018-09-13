@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import { Link } from "react-router-native";
+import { withRouter, Link } from "react-router-native";
 
 // NativeBase Components
 import { Form, Item, Input, Button, Text } from "native-base";
@@ -25,6 +25,7 @@ class RegisterForm extends Component {
 
   render() {
     if (authStore.isAuthenticated) return <Redirect to="/profile" />;
+
     return (
       <Form>
         <Item>

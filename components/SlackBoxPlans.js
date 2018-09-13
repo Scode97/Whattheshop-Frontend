@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-native";
+import { Link, Redirect } from "react-router-native";
 
 import {
   ImageBackground,
@@ -23,30 +23,32 @@ import {
 
 import { observer } from "mobx-react";
 import dataStore from "../stores/dataStore";
+import authStore from "../stores/authStore";
 
 class SlackBoxPlans extends Component {
   renderItem(data) {
-    console.log("------------------------");
-    console.log(data);
-    return (
-      <ScrollView key={data.name}>
-        <View>
-          <Link
-            component={TouchableOpacity}
-            to="/plansDetail/"
-            onPress={() => dataStore.findPlan(data.name)}
-          >
-            <Image
-              // component={TouchableOpacity}
-              // to="./SlackBoxPlansDetail"
-              // key={data.name}
-              source={{ uri: data.image }}
-              style={{ height: 230, width: null, flex: 1 }}
-            />
-          </Link>
-        </View>
-      </ScrollView>
-    );
+    if (!authStore.isAuthenticated) return <Redirect to="/profile" />;
+    else {
+      return (
+        <ScrollView key={data.name}>
+          <View>
+            <Link
+              component={TouchableOpacity}
+              to="/plansDetail/"
+              onPress={() => dataStore.findPlan(data.name)}
+            >
+              <Image
+                // component={TouchableOpacity}
+                // to="./SlackBoxPlansDetail"
+                // key={data.name}
+                source={{ uri: data.image }}
+                style={{ height: 230, width: null, flex: 1 }}
+              />
+            </Link>
+          </View>
+        </ScrollView>
+      );
+    }
   }
 
   componentDidMount() {

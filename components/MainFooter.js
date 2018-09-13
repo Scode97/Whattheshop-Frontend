@@ -4,19 +4,21 @@ import React, { Component } from "react";
 import { Footer, FooterTab, Button, Icon } from "native-base";
 
 // Router
-import { Link } from "react-router-native";
+import userStore from "../stores/userStore";
+import authStore from "../stores/authStore";
+
+import { withRouter, Link } from "react-router-native";
+import { observer } from "../node_modules/mobx-react";
 
 class MainFooter extends Component {
   render() {
     return (
-
-
       <Footer>
         <FooterTab>
           {/* onPress={() => this.props.history.goBack()} */}
-          {/* <Link component={Button} to="/SideMenu">
+          <Link component={Button} to="/SideMenu">
             <Icon type="Octicons" name="list-unordered" color="#BBBBBB" />
-          </Link> */}
+          </Link>
 
           <Link component={Button} to="/lol">
             <Icon type="Octicons" name="package" />
@@ -24,14 +26,26 @@ class MainFooter extends Component {
           <Link component={Button} to="/Login">
             <Icon name="lock" />
           </Link>
-          <Link component={Button} to="/profile">
+          <Button
+            onPress={() => {
+              if (!authStore.user) {
+                this.props.history.push("/register");
+              } else {
+                userStore.userHistory();
+                this.props.history.push("/profile");
+              }
+            }}
+          >
             <Icon name="person" />
-          </Link>
+          </Button>
 
+          {/* <Button onPress={() => userStore.userHistory()}>
+            <Icon name="home" />
+          </Button> */}
         </FooterTab>
       </Footer>
     );
   }
 }
 
-export default MainFooter;
+export default withRouter(observer(MainFooter));
