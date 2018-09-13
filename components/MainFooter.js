@@ -5,12 +5,11 @@ import { Footer, FooterTab, Button, Icon } from "native-base";
 
 // Router
 import { Link } from "react-router-native";
+import userStore from "../stores/userStore";
 
 class MainFooter extends Component {
   render() {
     return (
-
-
       <Footer>
         <FooterTab>
           {/* onPress={() => this.props.history.goBack()} */}
@@ -28,6 +27,9 @@ class MainFooter extends Component {
             <Icon name="person" />
           </Link>
 
+          <Button onPress={() => userStore.userHistory()}>
+            <Icon name="home" />
+          </Button>
         </FooterTab>
       </Footer>
     );

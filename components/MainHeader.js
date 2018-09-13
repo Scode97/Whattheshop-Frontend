@@ -9,7 +9,9 @@ import {
   Button,
   Icon,
   Right,
-  View
+  Image,
+  View,
+  Thumbnail
 } from "native-base";
 
 import userStore from "../stores/userStore";
@@ -23,14 +25,22 @@ class MainHeader extends Component {
     console.log(userStore.totalquantity);
     return (
       <Header transparent>
+        <Left>
+          <Button transparent onPress={() => this.props.history.goBack()}>
+            <Icon name="arrow-back" />
+          </Button>
+        </Left>
         <Right>
           <Link component={Button} to="/Cart" transparent>
-            <Text>
-              {userStore.totalquantity}
-
-              {/* {ListStore.orders.forEach(order=> order.quantity)} */}
-              <Icon name="beer" />
-            </Text>
+            <Text>{userStore.totalquantity}</Text>
+            <Thumbnail
+              source={require("../Images/cart.png")}
+              style={{
+                width: 45,
+                height: 40,
+                alignSelf: "flex-end"
+              }}
+            />
           </Link>
         </Right>
       </Header>
