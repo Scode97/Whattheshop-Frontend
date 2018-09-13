@@ -23,11 +23,18 @@ import userStore from "../stores/userStore";
 class Profile extends Component {
   // const history = userStore.orderhistory.map(data => this.renderItem(data));
   renderItem(data) {
+    let n = data.order_plans.map(data => <Text>{data.plan.name}</Text>);
     return (
-      <View>
-        <Text>Hello </Text>
-        <Text> {data.date_time}</Text>
-      </View>
+      <ListItem>
+        <Card>
+          <CardItem>
+            <Text>{data.date_time} </Text>
+          </CardItem>
+          <CardItem>
+            <Text>{n} </Text>
+          </CardItem>
+        </Card>
+      </ListItem>
     );
   }
 
@@ -36,24 +43,20 @@ class Profile extends Component {
 
     if (!authStore.user) return <Redirect to="/register" />;
     if (userStore.orderhistory === null) {
-      return <Text> Hiiii</Text>;
+      return <Text> No order history</Text>;
     } else {
       const userHistory = userStore.orderhistory.map(data =>
         this.renderItem(data)
       );
       return (
         <View>
-          <Card>
-            <CardItem>
-              <Text>{authStore.user.username}</Text>
-              <List>
-                <ListItem>{userHistory}</ListItem>
-                <Button danger onPress={() => authStore.logoutUser()}>
-                  <Text>Logout</Text>
-                </Button>
-              </List>
-            </CardItem>
-          </Card>
+          <Text textAlign="center">{authStore.user.username}</Text>
+          <List>
+            {userHistory}
+            <Button full light onPress={() => authStore.logoutUser()}>
+              <Text>Logout</Text>
+            </Button>
+          </List>
         </View>
       );
     }

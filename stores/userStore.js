@@ -1,4 +1,4 @@
-import { decorate, observable, action, computed } from "mobx";
+import { decorate, observable, action, computed, set } from "mobx";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
@@ -29,6 +29,10 @@ class userStore {
     this.totalquantity = this.totalquantity + 1;
   }
 
+  setTotal(data) {
+    this.total = Number(this.total) + Number(data);
+  }
+
   createOrder(name) {
     let obj = {
       name: dataStore.name,
@@ -39,15 +43,23 @@ class userStore {
 
     let x = this.order.findIndex(orders => orders.name === name);
     if (x >= 0) {
+      this.total -=
+        Number(this.order[x].totalPrice) * Number(this.order[x].quantity);
       this.order[x].quantity += 1;
-      for (let i = 0; i < this.order[x].quantity; i++) {
-        this.order[x].totalPrice += this.order[x].totalPrice;
-      }
+      // for (let i = 0; i < this.order[x].quantity; i++) {
+      this.order[x].totalPrice =
+        this.order[x].totalPrice * this.order[x].quantity;
+      // this.total = Number(this.total) + Number(this.order[x].totalPrice);
+      this.setTotal(this.order[x].totalPrice);
     } else {
       this.order.push(obj);
+      this.setTotal(obj.totalPrice);
     }
   }
 
+  calculatePrice() {
+    this.order.totalPrice;
+  }
   sendData() {
     const user = this.order;
     // const currentUser = authStore.user;
@@ -78,12 +90,19 @@ class userStore {
       )
       .catch(error => console.log(error));
   }
+
+  emptyCart() {
+    this.order = [];
+    this.totalquantity = 0;
+    this.totalPrice = 0;
+  }
 }
 
 decorate(userStore, {
   order: observable,
   totalPrice: observable,
   totalquantity: observable,
+  total: observable,
   name: observable,
   createOrder: action,
   userHistory: action
